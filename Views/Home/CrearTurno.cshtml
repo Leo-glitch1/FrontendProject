@@ -1,0 +1,45 @@
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+
+    <div>TURNOS GUYANA</div>
+
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <form method="post" asp-action="CrearTurno" class="w-50 p-4 border rounded">
+            <div class="form-group">
+                <label for="NombreCliente">Nombre del Cliente:</label>
+                <input type="text" id="NombreCliente" name="NombreCliente" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="CorreoCliente">Correo del Cliente:</label>
+                <input type="email" id="CorreoCliente" name="CorreoCliente" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="TelefonoCliente">Teléfono del Cliente:</label>
+                <input type="text" id="TelefonoCliente" name="TelefonoCliente" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Fecha">Fecha:</label>
+                <input type="date" id="Fecha" name="Fecha" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="Hora">Hora:</label>
+                <input type="time" id="Hora" name="Hora" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="SucursalId">Sucursal ID:</label>
+                <input type="number" id="SucursalId" name="SucursalId" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+                <label for="EstadoId">Estado ID:</label>
+                <input type="number" id="EstadoId" name="Estado.Id" class="form-control" required />
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">Crear Turno</button>
+        </form>
+    </div>
