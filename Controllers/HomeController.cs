@@ -13,18 +13,7 @@ public class HomeController : Controller
     public HomeController(ILogger<HomeController> logger)
     {
         _logger = logger;
-    }
-
-    public IActionResult Index()
-    {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
+    }    
     // Acción para mostrar el formulario de creación de turno
     public IActionResult CrearTurno()
     {
@@ -35,25 +24,31 @@ public class HomeController : Controller
     [HttpPost]
     public async Task<IActionResult> CrearTurno(Turno turno)
     {
+        if (!ModelState.IsValid)
+        {
+            // Si la validación falla, muestra el formulario con los errores
+            return View(turno);
+        }
+
         using (var client = new HttpClient())
         {
-            client.BaseAddress = new Uri("http://localhost:8080/"); // Asegúrate de que sea la dirección correcta
-
-            // Realiza la solicitud POST a /api/turnos/create
+            client.BaseAddress = new Uri("http://localhost:8080/");
             var response = await client.PostAsJsonAsync("api/turnos/create", turno);
 
             if (response.IsSuccessStatusCode)
             {
-                // Redirigir a la página de inicio o mostrar un mensaje de éxito
-                return RedirectToAction("Index");
+                // Mostrar un mensaje de éxito
+                TempData["SuccessMessage"] = "Turno creado exitosamente.";
+                return RedirectToAction("CrearTurno");
             }
             else
             {
-                // Manejar el error en caso de fallo en la creación del turno
+                // Mostrar un mensaje de error
                 ModelState.AddModelError(string.Empty, "Hubo un error al crear el turno.");
                 return View(turno);
             }
         }
     }
+
 
 }

@@ -1,45 +1,62 @@
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+@{
+    ViewData["Title"] = "Crear Turno";
+}
 
-    <div>TURNOS GUYANA</div>
+<h2>Crear Turno</h2>
 
-    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
-        <form method="post" asp-action="CrearTurno" class="w-50 p-4 border rounded">
-            <div class="form-group">
-                <label for="NombreCliente">Nombre del Cliente:</label>
-                <input type="text" id="NombreCliente" name="NombreCliente" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-                <label for="CorreoCliente">Correo del Cliente:</label>
-                <input type="email" id="CorreoCliente" name="CorreoCliente" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-                <label for="TelefonoCliente">Teléfono del Cliente:</label>
-                <input type="text" id="TelefonoCliente" name="TelefonoCliente" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-                <label for="Fecha">Fecha:</label>
-                <input type="date" id="Fecha" name="Fecha" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-                <label for="Hora">Hora:</label>
-                <input type="time" id="Hora" name="Hora" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-                <label for="SucursalId">Sucursal ID:</label>
-                <input type="number" id="SucursalId" name="SucursalId" class="form-control" required />
-            </div>
-
-            <div class="form-group">
-                <label for="EstadoId">Estado ID:</label>
-                <input type="number" id="EstadoId" name="Estado.Id" class="form-control" required />
-            </div>
-            
-            <button type="submit" class="btn btn-primary btn-block">Crear Turno</button>
-        </form>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
     </div>
+}
+
+@if (ViewData.ModelState.IsValid == false)
+{
+    <div class="alert alert-danger">
+        Hubo errores en el formulario. Por favor, verifica los datos.
+    </div>
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <form method="post" asp-action="CrearTurno" class="w-50 p-4 border rounded">
+        <div class="form-group">
+            <label for="NombreCliente">Nombre del Cliente:</label>
+            <input type="text" id="NombreCliente" name="NombreCliente" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="CorreoCliente">Correo del Cliente:</label>
+            <input type="email" id="CorreoCliente" name="CorreoCliente" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="TelefonoCliente">Teléfono del Cliente:</label>
+            <input type="text" id="TelefonoCliente" name="TelefonoCliente" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Fecha">Fecha:</label>
+            <input type="date" id="Fecha" name="Fecha" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Hora">Hora:</label>
+            <input type="time" id="Hora" name="Hora" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="SucursalId">Sucursal ID:</label>
+            <input type="number" id="SucursalId" name="SucursalId" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label for="EstadoId">Estado ID:</label>
+            <input type="number" id="EstadoId" name="Estado.Id" class="form-control" required />
+        </div>
+
+        <div class="form-group text-center mt-3">
+            <button type="submit" class="btn btn-warning">Crear Turno</button>
+        </div>
+    </form>
+</div>
